@@ -38,14 +38,14 @@ properties.resendThrottleInterval=30
 [[resource.access_control]]
 default_access = "allow"
 context = "(.*)/api/identity/sms-otp/v1/generate"
-secure = "false"
+secure = "true"
 http_method = "POST"
 permissions = "/permission/admin/manage/identity/authentication/otp/generate"
    
 [[resource.access_control]]
 default_access = "allow"
 context = "(.*)/api/identity/sms-otp/v1/validate"
-secure = "false"
+secure = "true"
 http_method = "POST"
 permissions = "/permission/admin/manage/identity/authentication/otp/validate"
   
