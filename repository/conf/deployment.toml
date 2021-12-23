@@ -1,0 +1,150 @@
+[server]
+hostname = "localhost"
+node_ip = "127.0.0.1"
+base_path = "https://$ref{server.hostname}:${carbon.management.port}"
+
+[super_admin]
+username = "admin"
+password = "admin"
+create_admin_account = true
+
+[identity_mgt.notification]
+default_notification_channel = "SMS"
+resolve_notification_channel = true
+
+[[event_handler]]
+name= "smsOtp"
+# SMS-OTP event is enabled or disabled, values - true/false
+properties.enabled=true
+# SMS-OTP token length, values > 0 , default value - 6
+properties.tokenLength=6
+# SMS-OTP notification send using WSO2IS evnting configurations or not. 
+# If true, config SMS service provider to in toml configs
+properties.triggerNotification=true
+# If token is alphanueric token, values - true, false
+properties.alphanumericToken=true
+# OTP validation failure reason will be sent in the response.
+properties.showValidationFailureReason=false
+# SMS-OTP token validity period.
+properties.tokenValidityPeriod=120
+# Same valid OTP will be resent, if issued within the interval.
+# Set '0' to always send a new OTP.
+# Should be less than the 'tokenValidityPeriod' value.
+properties.tokenRenewalInterval=60
+# Throttle OTP generation requests from the same user Id.
+# Set '0' for no throttling.
+properties.resendThrottleInterval=30
+
+[[resource.access_control]]
+default_access = "allow"
+context = "(.*)/api/identity/sms-otp/v1/generate"
+secure = "false"
+http_method = "POST"
+permissions = "/permission/admin/manage/identity/authentication/otp/generate"
+   
+[[resource.access_control]]
+default_access = "allow"
+context = "(.*)/api/identity/sms-otp/v1/validate"
+secure = "false"
+http_method = "POST"
+permissions = "/permission/admin/manage/identity/authentication/otp/validate"
+  
+[tenant_context.rewrite]
+custom_webapps=["/api/identity/sms-otp/v1/smsotp/"]
+
+[identity_mgt.events.schemes.'default.notification.sender']
+subscriptions=["PRE_DELETE_USER","TRIGGER_SMS_NOTIFICATION"]
+
+[user_store]
+type = "read_write_ldap_unique_id"
+connection_url = "ldap://localhost:${Ports.EmbeddedLDAP.LDAPServerPort}"
+connection_name = "uid=admin,ou=system"
+connection_password = "admin"
+base_dn = "dc=wso2,dc=org"      #refers the base dn on which the user and group search bases will be generated
+[database.identity_db]
+type = "h2"
+url = "jdbc:h2:./repository/database/WSO2IDENTITY_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000"
+username = "wso2carbon"
+password = "wso2carbon"
+
+[database.shared_db]
+type = "h2"
+url = "jdbc:h2:./repository/database/WSO2SHARED_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000"
+username = "wso2carbon"
+password = "wso2carbon"
+
+[keystore.primary]
+file_name = "wso2carbon.jks"
+password = "wso2carbon"
+
+[truststore]
+file_name="client-truststore.jks"
+password="wso2carbon"
+type="JKS"
+
+[account_recovery.endpoint.auth]
+hash= "66cd9688a2ae068244ea01e70f0e230f5623b7fa4cdecb65070a09ec06452262"
+
+[identity.auth_framework.endpoint]
+app_password= "dashboard"
+
+[cors]
+allow_generic_http_requests = true
+allow_any_origin = true
+allowed_origins = [
+    "http://localhost:8080",
+]
+allow_subdomains = false
+supported_methods = [
+    "GET",
+    "POST",
+    "HEAD",
+    "OPTIONS",
+    "PATCH"
+]
+support_any_header = true
+supported_headers = []
+exposed_headers = []
+supports_credentials = true
+max_age = 3600
+tag_requests = false
+
+[[resource.access_control]]
+context = "/sample-auth(.*)"
+secure = false
+http_method = "all"
+
+# The KeyStore which is used for encrypting/decrypting internal data. By default the primary keystore is used as the internal keystore.
+
+#[keystore.internal]
+#file_name = "$ref{keystore.primary.file_name}"
+#type = "$ref{keystore.primary.type}"
+#password = "$ref{keystore.primary.password}"
+#alias = "$ref{keystore.primary.alias}"
+#key_password = "$ref{keystore.primary.key_password}"
+
+# The KeyStore which is used for tls communication. By default the primary keystore is used as the tls keystore.
+
+#[keystore.tls]
+#file_name = "$ref{keystore.primary.file_name}"
+#type = "$ref{keystore.primary.type}"
+#password = "$ref{keystore.primary.password}"
+#alias = "$ref{keystore.primary.alias}"
+#key_password = "$ref{keystore.primary.key_password}"
+
+#Google reCAPTCHA settings.
+
+#[recaptcha]
+#enabled = "true"
+#api_url = "https://www.google.com/recaptcha/api.js"
+#verify_url = "https://www.google.com/recaptcha/api/siteverify"
+#site_key = ""
+#secret_key = ""
+
+# SMTP email sender settings.
+#[output_adapter.email]
+#from_address= "abcd@gmail.com"
+#username= "abcd"
+#password= "xxxx"
+#hostname= "smtp.gmail.com"
+#port= 587

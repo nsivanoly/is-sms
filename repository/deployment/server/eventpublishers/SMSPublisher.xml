@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventPublisher name="HTTPOutputEventAdapter" processing="enable"     statistics="disable" trace="disable" xmlns="http://wso2.org/carbon/eventpublisher">
+    <from streamName="id_gov_sms_notify_stream" version="1.0.0"/><mapping customMapping="enable" type="json">
+    <inline>
+        {"api_key"="api_key",
+        "api_secret"="api_secret",
+        "from"="NEXMO",
+        "to"={{mobile}},
+        "text"={{body}}}
+    </inline>
+</mapping>
+    <to eventAdapterType="http">
+        <property name="http.client.method">httpPost</property>
+        <property name="http.url">https://rest.nexmo.com/sms/json</property></to>
+</eventPublisher>
