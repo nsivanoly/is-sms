@@ -1,0 +1,537 @@
+{
+	"info": {
+		"_postman_id": "113e14e5-77df-49b2-a034-b90a2b1e8b0b",
+		"name": "WSO2 Identity Server - SMS OTP API Definition",
+		"description": "This is the RESTful API for a user to manage SMS-OTP in WSO2 Identity Server.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "smsotp",
+			"item": [
+				{
+					"name": "/smsotp/generate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/smsotp/generate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"smsotp",
+								"generate"
+							],
+							"variable": [
+								{
+									"key": "server-url",
+									"value": "{{server-url}}"
+								},
+								{
+									"key": "tenant-domain",
+									"value": "{{tenant-domain}}"
+								}
+							]
+						},
+						"description": "This API is used to generate the smsotp.\n<b>Permission required:</b><br>\n* none<br>\n<b>Scope required:</b><br>\n* internal_login\n"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/generate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"generate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"transactionId\": \"magna enim sunt\",\n \"smsOTP\": \"occaecat anim ea cupidatat cillum\"\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/generate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"generate"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"SMS-60001\",\n \"message\": \"Some error message\",\n \"description\": \"Some error description\",\n \"traceId\": \"e0fbcfeb-3617-43c4-8dd0-7b7d38e13047\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/generate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"generate"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Resource Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/generate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"generate"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/generate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"generate"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"SMS-60001\",\n \"message\": \"Some error message\",\n \"description\": \"Some error description\",\n \"traceId\": \"e0fbcfeb-3617-43c4-8dd0-7b7d38e13047\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/smsotp/validate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\",\n    \"transactionId\": \"esse sint\",\n    \"smsOTP\": \"ex Ut\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/smsotp/validate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"smsotp",
+								"validate"
+							],
+							"variable": [
+								{
+									"key": "server-url",
+									"value": "{{server-url}}"
+								},
+								{
+									"key": "tenant-domain",
+									"value": "{{tenant-domain}}"
+								}
+							]
+						},
+						"description": "This API is used to validate the smsotp.\n<b>Permission required:</b><br>\n* none<br>\n<b>Scope required:</b><br>\n* internal_login\n"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\",\n    \"transactionId\": \"esse sint\",\n    \"smsOTP\": \"ex Ut\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/validate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"validate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"isValid\": false,\n \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\",\n \"failureReason\": {\n  \"code\": \"SMS-60006\",\n  \"message\": \"Expired OTP.\",\n  \"description\": \"Expired OTP provided for the user Id: 8b1cc9c4-b671-448a-a334-5afe838a4a3b.\"\n }\n}"
+						},
+						{
+							"name": "Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\",\n    \"transactionId\": \"esse sint\",\n    \"smsOTP\": \"ex Ut\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/validate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"validate"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"SMS-60001\",\n \"message\": \"Some error message\",\n \"description\": \"Some error description\",\n \"traceId\": \"e0fbcfeb-3617-43c4-8dd0-7b7d38e13047\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\",\n    \"transactionId\": \"esse sint\",\n    \"smsOTP\": \"ex Ut\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/validate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"validate"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Resource Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\",\n    \"transactionId\": \"esse sint\",\n    \"smsOTP\": \"ex Ut\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/validate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"validate"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\": \"8b1cc9c4-b671-448a-a334-5afe838a4a3b\",\n    \"transactionId\": \"esse sint\",\n    \"smsOTP\": \"ex Ut\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/smsotp/validate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"smsotp",
+										"validate"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"code\": \"SMS-60001\",\n \"message\": \"Some error message\",\n \"description\": \"Some error description\",\n \"traceId\": \"e0fbcfeb-3617-43c4-8dd0-7b7d38e13047\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "1. User self registers without verified claims",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YWRtaW4="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": {\n        \"username\": \"kim\",\n        \"realm\": \"PRIMARY\",\n        \"password\": \"Password12!\",\n        \"claims\": [\n            {\n                \"uri\": \"http://wso2.org/claims/givenname\",\n                \"value\": \"kim\"\n            },\n            {\n                \"uri\": \"http://wso2.org/claims/emailaddress\",\n                \"value\": \"kim.anderson@gmail.com\"\n            },\n            {\n                \"uri\": \"http://wso2.org/claims/lastname\",\n                \"value\": \"Anderson\"\n            },\n            {\n                \"uri\": \"http://wso2.org/claims/mobile\",\n                \"value\": \"+947721584558\"\n            }\n        ]\n    },\n    \"properties\": []\n}"
+				},
+				"url": {
+					"raw": "https://localhost:9443/api/identity/user/v1.0/me",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "9443",
+					"path": [
+						"api",
+						"identity",
+						"user",
+						"v1.0",
+						"me"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "oauth2"
+	},
+	"variable": [
+		{
+			"key": "server-url",
+			"value": "localhost:9443",
+			"type": "any",
+			"description": {
+				"content": "",
+				"type": "text/plain"
+			}
+		},
+		{
+			"key": "tenant-domain",
+			"value": "carbon.super",
+			"type": "any",
+			"description": {
+				"content": "",
+				"type": "text/plain"
+			}
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://{{server-url}}/t/{{tenant-domain}}/api/identity/sms-otp/v1",
+			"type": "string"
+		}
+	]
+}
